@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  be:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: cubex-health-api-backend
+    restart: always
+    env_file:
+      - .env.production
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+      - redis
+  db:
+    image: postgres:16-alpine
+    container_name: cubex-health-api-postgres
+    restart: always
+    env_file:
+      - pgadmin.env
+    ports:
+      - 5432:5432
+    volumes:
+      - db_data:/var/lib/postgresql/data
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: cubex-health-api-pgadmin
+    restart: always
+    ports:
+      - '5050:80'
+    env_file:
+      - pgadmin.env
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+    depends_on:
+      - db
+  redis:
+    image: redis
+    container_name: cubex-health-api-redis
+    command: --port 6380
+    ports:
+      - '6380:6380'
+    volumes:
+      - redis-data:/var/lib/redis
+
+volumes:
+  db_data:
+  pgadmin-data:
+  redis-data:
