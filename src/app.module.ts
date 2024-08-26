@@ -4,9 +4,11 @@ import { AppController } from './app.controller';
 import { DatabaseModule } from './database';
 import {
   DoctorsModule,
+  NursesModule,
   PatientDoctorsModule,
   PatientsModule,
   SpecializationsModule,
+  StaffModule,
 } from './modules';
 
 @Module({
@@ -16,6 +18,8 @@ import {
     DoctorsModule,
     SpecializationsModule,
     PatientDoctorsModule,
+    NursesModule,
+    StaffModule,
   ],
   controllers: [AppController],
   providers: [],

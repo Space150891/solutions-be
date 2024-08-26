@@ -18,6 +18,7 @@ import {
 } from 'typeorm';
 
 import { PatientsListsDTO } from './dto';
+import { paginationBuild, sortBuild } from 'src/utils/db-helpers';
 
 @Injectable()
 export class PatientsService {
@@ -64,13 +65,6 @@ export class PatientsService {
       },
     };
 
-    // Sort
-    const sortEntries = Object.entries(sortBy || {});
-    const [sortKey, sortVal] = sortEntries.length
-      ? sortEntries[0]
-      : ['createdAt', 'DESC'];
-    const order = { [sortKey || 'createdAt']: sortVal || 'DESC' };
-
     // Patient
     if (first_name) where.first_name = ILike(`%${first_name}%`);
     if (last_name) where.last_name = ILike(`%${last_name}%`);
@@ -95,13 +89,16 @@ export class PatientsService {
 
     where.doctor = whereDoctor;
 
+    const order = sortBuild(sortBy);
+    const { take, skip } = paginationBuild(pagination);
+
     const query: FindManyOptions<PatientsEntity> = {
       select,
       relations: ['doctor', 'doctor.specialization'],
       where,
-      skip: (pagination.page - 1) * pagination.limit,
-      take: pagination.limit,
       order,
+      take,
+      skip,
     };
 
     const patients = await this.patientsRepository.find(query);

@@ -6,8 +6,10 @@ import {
   AgendasEntity,
   BaseEntity,
   DoctorsEntity,
+  NursesEntity,
   PatientsEntity,
   SpecializationsEntity,
+  StaffEntity,
 } from './models';
 
 dotenv.config();
@@ -18,6 +20,8 @@ export const entities = [
   DoctorsEntity,
   PatientsEntity,
   SpecializationsEntity,
+  NursesEntity,
+  StaffEntity,
 ];
 
 export const PostgresDataSource = new DataSource({

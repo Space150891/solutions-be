@@ -4,6 +4,7 @@ import { DoctorsEntity } from 'src/database/postgres/models';
 import { FindManyOptions, FindOptionsWhere, ILike, Repository } from 'typeorm';
 
 import { DoctorCreateDTO, DoctorsSearchDTO, DoctorUpdateDTO } from './dto';
+import { paginationBuild, sortBuild } from 'src/utils/db-helpers';
 
 @Injectable()
 export class DoctorsService {
@@ -49,12 +50,8 @@ export class DoctorsService {
       };
     }
 
-    // Sort
-    const sortEntries = Object.entries(sortBy || {});
-    const [sortKey, sortVal] = sortEntries.length
-      ? sortEntries[0]
-      : ['createdAt', 'DESC'];
-    const order = { [sortKey || 'createdAt']: sortVal || 'DESC' };
+    const order = sortBuild(sortBy);
+    const { take, skip } = paginationBuild(pagination);
 
     const query: FindManyOptions<DoctorsEntity> = {
       select: {
@@ -71,9 +68,9 @@ export class DoctorsService {
       },
       relations: ['specialization'],
       where,
-      skip: (pagination.page - 1) * pagination.limit,
-      take: pagination.limit,
       order,
+      take,
+      skip,
     };
 
     return this.doctorsRepository.find(query);
