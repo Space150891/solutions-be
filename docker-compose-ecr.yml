@@ -13,7 +13,7 @@ services:
       - db
       - redis
   db:
-    image: postgres:16-alpine
+    image: netreconlab/hipaa-postgres:latest
     container_name: cubex-health-api-postgres
     restart: always
     env_file:
@@ -34,6 +34,20 @@ services:
       - pgadmin-data:/var/lib/pgadmin
     depends_on:
       - db
+  # For monitoring and audit. Requires additional scripts to run inside the container.
+  # monitor:
+  #   image: percona/pmm-server:2
+  #   container_name: cubex-health-api-monitor
+  #   restart: always
+  #   ports:
+  #     - 1080:80 # Unsecure connections
+  #     - 1443:443 # Secure connections
+  #   environment:
+  #     - pgadmin.env
+  #   volumes:
+  #     - pmm-data:/srv
+  #   depends_on:
+  #     - db
   redis:
     image: redis
     container_name: cubex-health-api-redis
@@ -47,3 +61,4 @@ volumes:
   db_data:
   pgadmin-data:
   redis-data:
+  # pmm-data:
