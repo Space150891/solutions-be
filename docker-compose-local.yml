@@ -49,6 +49,16 @@ services:
   #     - pmm-data:/srv
   #   depends_on:
   #     - db
+  schemaspy:
+    image: schemaspy/schemaspy:snapshot
+    volumes:
+      - ./schemaspy/output:/output
+      - ./schemaspy/config:/config
+    container_name: 'schemaspy_local'
+    command:
+      ['-configFile', '/config/schemaspy.properties', '-imageformat', 'svg']
+    depends_on:
+      - db
   redis:
     image: redis
     container_name: cubex-health-api-redis
