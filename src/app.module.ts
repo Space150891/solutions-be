@@ -3,6 +3,7 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { DatabaseModule } from './database';
 import {
+  AppointmentsModule,
   DoctorsModule,
   NursesModule,
   PatientDoctorsModule,
@@ -20,6 +21,7 @@ import {
     PatientDoctorsModule,
     NursesModule,
     StaffModule,
+    AppointmentsModule,
   ],
   controllers: [AppController],
   providers: [],

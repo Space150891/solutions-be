@@ -4,6 +4,7 @@ import { DataSource } from 'typeorm';
 
 import {
   AgendasEntity,
+  AppointmentsEntity,
   BaseEntity,
   DoctorsEntity,
   NursesEntity,
@@ -22,6 +23,7 @@ export const entities = [
   SpecializationsEntity,
   NursesEntity,
   StaffEntity,
+  AppointmentsEntity,
 ];
 
 export const PostgresDataSource = new DataSource({

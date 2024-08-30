@@ -1,6 +1,7 @@
 import { ApiHideProperty } from '@nestjs/swagger';
 import { IsOptional, IsString } from 'class-validator';
 import {
+  AppointmentsEntity,
   DoctorsEntity,
   PatientsEntity,
   SpecializationsEntity,
@@ -8,6 +9,7 @@ import {
 import { BasicRO, DeletedRO, UpdatedRO } from 'src/utils';
 
 export class DoctorsDTO implements DoctorsEntity {
+  @ApiHideProperty() appointments: AppointmentsEntity[];
   @ApiHideProperty() specialization: SpecializationsEntity;
   @ApiHideProperty() patients: PatientsEntity[];
 

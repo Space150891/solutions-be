@@ -1,5 +1,6 @@
 import { ApiHideProperty, ApiProperty } from '@nestjs/swagger';
 import {
+  AppointmentsEntity,
   DoctorsEntity,
   PatientsEntity,
   SpecializationsEntity,
@@ -25,6 +26,7 @@ export class DoctorPart implements DoctorsEntity {
   @ApiHideProperty() patients: PatientsEntity[];
   @ApiHideProperty() createdAt: Date;
   @ApiHideProperty() updatedAt: Date;
+  @ApiHideProperty() appointments: AppointmentsEntity[];
 }
 
 export class PatientsListsDTO
@@ -56,9 +58,9 @@ export class PatientsListsPart implements PatientsEntity {
   };
   @ApiProperty() first_name: string;
   @ApiProperty() last_name: string;
-  @ApiProperty() status: string;
 
   @ApiProperty({ type: DoctorPart }) doctor: DoctorPart;
+  @ApiHideProperty() appointments: AppointmentsEntity[];
 }
 
 export class PatientsListsRO extends BasicRO {

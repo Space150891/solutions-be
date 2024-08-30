@@ -35,7 +35,7 @@ export class PatientsService {
     doctorId?: string,
   ) {
     const where = {} as FindOptionsWhere<PatientsEntity>;
-    const { first_name, last_name, status, gender, doctor, sortBy } = body;
+    const { first_name, last_name, gender, doctor, sortBy } = body;
     const {
       first_name: doctorFirstName,
       last_name: doctorLastName,
@@ -47,7 +47,6 @@ export class PatientsService {
       id: true,
       first_name: true,
       last_name: true,
-      status: true,
       gender: true,
       date_of_birth: true,
       createdAt: true,
@@ -68,7 +67,6 @@ export class PatientsService {
     // Patient
     if (first_name) where.first_name = ILike(`%${first_name}%`);
     if (last_name) where.last_name = ILike(`%${last_name}%`);
-    if (status) where.status = status;
     if (gender) where.gender = gender;
     if (body.born?.from && body.born?.to)
       where.date_of_birth = Between(body.born.from, body.born.to);
@@ -116,7 +114,6 @@ export class PatientsService {
         id: true,
         first_name: true,
         last_name: true,
-        status: true,
         gender: true,
         date_of_birth: true,
         doctor: {

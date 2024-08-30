@@ -1,5 +1,6 @@
 import { ApiHideProperty, ApiProperty } from '@nestjs/swagger';
 import {
+  AppointmentsEntity,
   DoctorsEntity,
   PatientsEntity,
   SpecializationsEntity,
@@ -34,10 +35,13 @@ export class DoctorsSearchDTO
   @ApiHideProperty() createdAt: Date;
   @ApiHideProperty() updatedAt: Date;
 
+  @ApiHideProperty() appointments: AppointmentsEntity[];
+
   withDescription: boolean;
 }
 
 export class DoctorsListDataRO implements DoctorsEntity {
+  @ApiHideProperty() appointments: AppointmentsEntity[];
   specialization: SpecializationDTO;
   @ApiHideProperty() patients: PatientsEntity[];
 

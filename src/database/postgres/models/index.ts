@@ -5,3 +5,4 @@ export { PatientsEntity } from './patients.entity';
 export { SpecializationsEntity } from './specializations.entity';
 export { NursesEntity } from './nurses.entity';
 export { StaffEntity } from './staff.entity';
+export { AppointmentsEntity } from './appointments.entity';

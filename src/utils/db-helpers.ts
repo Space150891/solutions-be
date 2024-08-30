@@ -1,4 +1,8 @@
-export const sortBuild = (sortBy: { [x: string]: 'ASC' | 'DESC' }) => {
+import { FindOptionsOrder } from 'typeorm';
+
+export const sortBuild = (sortBy: {
+  [x: string]: 'ASC' | 'DESC';
+}): FindOptionsOrder<any> => {
   const sortEntries = Object.entries(sortBy || {});
   const [sortKey, sortVal] = sortEntries.length
     ? sortEntries[0]
@@ -10,9 +14,12 @@ export const sortBuild = (sortBy: { [x: string]: 'ASC' | 'DESC' }) => {
 export const paginationBuild = (pagination: {
   page: number;
   limit: number;
-}) => {
+}): { skip: number; take: number } => {
+  const { page, limit } = pagination;
+  const pageClean = page ? Number(page) : 1;
+  const limitClean = limit ? Number(limit) : 10;
   return {
-    skip: (pagination.page - 1) * pagination.limit,
-    take: pagination.limit,
+    skip: (pageClean - 1) * limitClean,
+    take: limitClean,
   };
 };
