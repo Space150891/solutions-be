@@ -1,6 +1,7 @@
 import {
   AppointmentsEntity,
   DoctorsEntity,
+  PatientIllnessEntity,
   PatientsEntity,
   SpecializationsEntity,
 } from '@/database/postgres/models';
@@ -9,6 +10,7 @@ import { ApiHideProperty } from '@nestjs/swagger';
 import { IsOptional, IsString } from 'class-validator';
 
 export class DoctorsDTO implements DoctorsEntity {
+  @ApiHideProperty() illnesses: PatientIllnessEntity[];
   @ApiHideProperty() appointments: AppointmentsEntity[];
   @ApiHideProperty() specialization: SpecializationsEntity;
   @ApiHideProperty() patients: PatientsEntity[];

@@ -1,6 +1,7 @@
 import {
   AppointmentsEntity,
   DoctorsEntity,
+  PatientIllnessEntity,
   PatientsEntity,
   SpecializationsEntity,
 } from '@/database/postgres/models';
@@ -22,6 +23,7 @@ export class DoctorsSearchDTO
   extends DoctorsWithSpecializationDTO
   implements DoctorsEntity
 {
+  @ApiHideProperty() illnesses: PatientIllnessEntity[];
   first_name: string;
   last_name: string;
   description: string;
@@ -41,6 +43,7 @@ export class DoctorsSearchDTO
 }
 
 export class DoctorsListDataRO implements DoctorsEntity {
+  @ApiHideProperty() illnesses: PatientIllnessEntity[];
   @ApiHideProperty() appointments: AppointmentsEntity[];
   specialization: SpecializationDTO;
   @ApiHideProperty() patients: PatientsEntity[];

@@ -1,37 +1,20 @@
-import { BeforeInsert, BeforeUpdate, Column, Entity, OneToMany } from 'typeorm';
+import { Column, Entity, ManyToOne } from 'typeorm';
 
-import { CryptoService } from '../../../crypto/services';
-import { BaseEntity } from './baseEntity';
+import { BaseEntity, TextTF } from './baseEntity';
+import { DoctorsEntity } from './doctors.entity';
 import { PatientMedicalRecordEntity } from './patient-medical-record.entity';
 
 @Entity('patient-illness')
 export class PatientIllnessEntity extends BaseEntity {
-  private cryptoService = new CryptoService();
+  @Column({ transformer: TextTF }) illness: string;
+  @Column({ transformer: TextTF }) diagnosis: string;
+  @Column({ transformer: TextTF }) treatment: string;
+  @Column({ transformer: TextTF }) prescription: string;
+  @Column({ transformer: TextTF }) date: string;
 
-  @Column() illness: string;
-  @Column() diagnosis: string;
-  @Column() treatment: string;
-  @Column() prescription: string;
-  @Column() date: string;
+  @ManyToOne(() => PatientMedicalRecordEntity, (illness) => illness.illnesses)
+  patientRecord: PatientMedicalRecordEntity;
 
-  @OneToMany(() => PatientMedicalRecordEntity, (illness) => illness.patient)
-  patient: PatientMedicalRecordEntity;
-
-  @BeforeInsert()
-  @BeforeUpdate()
-  encryptData() {
-    this.illness = this.cryptoService.encrypt(this.illness);
-    this.diagnosis = this.cryptoService.encrypt(this.diagnosis);
-    this.treatment = this.cryptoService.encrypt(this.treatment);
-    this.prescription = this.cryptoService.encrypt(this.prescription);
-    this.date = this.cryptoService.encrypt(this.date);
-  }
-
-  decryptData() {
-    this.illness = this.cryptoService.decrypt(this.illness);
-    this.diagnosis = this.cryptoService.decrypt(this.diagnosis);
-    this.treatment = this.cryptoService.decrypt(this.treatment);
-    this.prescription = this.cryptoService.decrypt(this.prescription);
-    this.date = this.cryptoService.decrypt(this.date);
-  }
+  @ManyToOne(() => DoctorsEntity, (doctor) => doctor.illnesses)
+  doctor: DoctorsEntity;
 }

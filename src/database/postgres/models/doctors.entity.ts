@@ -1,9 +1,10 @@
 import { Column, Entity, ManyToOne, OneToMany } from 'typeorm';
 
+import { AppointmentsEntity } from './appointments.entity';
 import { BaseEntity } from './baseEntity';
+import { PatientIllnessEntity } from './patient-illness.entity';
 import { PatientsEntity } from './patients.entity';
 import { SpecializationsEntity } from './specializations.entity';
-import { AppointmentsEntity } from './appointments.entity';
 
 @Entity('doctors')
 export class DoctorsEntity extends BaseEntity {
@@ -24,4 +25,7 @@ export class DoctorsEntity extends BaseEntity {
 
   @OneToMany(() => AppointmentsEntity, (appointment) => appointment.doctor)
   appointments: AppointmentsEntity[];
+
+  @OneToMany(() => PatientIllnessEntity, (illness) => illness.doctor)
+  illnesses: PatientIllnessEntity[];
 }

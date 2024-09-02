@@ -1,6 +1,7 @@
 import {
   AppointmentsEntity,
   DoctorsEntity,
+  PatientIllnessEntity,
   PatientMedicalRecordEntity,
   PatientsEntity,
   SpecializationsEntity,
@@ -18,6 +19,7 @@ export class SpecializationDTO implements SpecializationsEntity {
 }
 
 export class DoctorPart implements DoctorsEntity {
+  @ApiHideProperty() illnesses: PatientIllnessEntity[];
   @ApiProperty() id: string;
   @ApiProperty() first_name: string;
   @ApiProperty() last_name: string;

@@ -1,4 +1,11 @@
-import { Column, Entity, ManyToMany, ManyToOne, OneToOne } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToMany,
+  ManyToOne,
+  OneToOne,
+} from 'typeorm';
 
 import { AppointmentsEntity } from './appointments.entity';
 import { BaseEntity } from './baseEntity';
@@ -29,6 +36,9 @@ export class PatientsEntity extends BaseEntity {
   })
   appointments: AppointmentsEntity[];
 
-  @OneToOne(() => PatientMedicalRecordEntity)
+  @OneToOne(() => PatientMedicalRecordEntity, (record) => record.patient, {
+    onDelete: 'SET NULL',
+  })
+  @JoinColumn()
   medicalRecord: PatientMedicalRecordEntity;
 }

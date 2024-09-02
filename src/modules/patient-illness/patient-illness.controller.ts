@@ -26,13 +26,13 @@ import { PatientIllnessService } from './patient-illness.service';
 export class PatientIllnessController {
   constructor(private readonly patientIllnessService: PatientIllnessService) {}
 
-  @Get('list/:id')
+  @Get('list/:patientRecordId')
   async list(
-    @Param('id') patientId: string,
+    @Param('patientRecordId') patientRecordId: string,
     @Query('page') page = 1,
     @Query('limit') limit = 10,
   ): Promise<PatientIllnessesListRO> {
-    const result = await this.patientIllnessService.list(patientId, {
+    const result = await this.patientIllnessService.list(patientRecordId, {
       page,
       limit,
     });

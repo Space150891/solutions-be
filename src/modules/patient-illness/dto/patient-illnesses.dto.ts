@@ -13,7 +13,7 @@ export class PatientIllnessesDTO extends PatientIllnessEntity {
   treatment: string;
   prescription: string;
   date: string;
-  @ApiHideProperty() patient: PatientMedicalRecordEntity;
+  @ApiHideProperty() patientRecord: PatientMedicalRecordEntity;
   @ApiHideProperty() id: string;
   @ApiHideProperty() createdAt: Date;
   @ApiHideProperty() updatedAt: Date;

@@ -9,8 +9,8 @@ export class CryptoService {
 
   constructor() {
     this.algorithm = 'aes-256-cbc';
-    this.key = crypto.randomBytes(32);
-    this.iv = crypto.randomBytes(16);
+    this.key = Buffer.from(process.env.ENCRYPTION_KEY, 'hex');
+    this.iv = Buffer.from(process.env.ENCRYPTION_IV, 'hex');
   }
 
   encrypt(data: string): string {

@@ -11,10 +11,13 @@ export class PatientIllnessService {
     private readonly patientIllnessRepository: Repository<PatientIllnessEntity>,
   ) {}
 
-  public async list(patientId: string, pagination: { page; limit }) {
+  public async list(
+    patientRecordId: string,
+    pagination: { page: number; limit: number },
+  ) {
     const { skip, take } = paginationBuild(pagination);
     return await this.patientIllnessRepository.find({
-      where: { patient: { id: patientId } },
+      where: { patientRecord: { id: patientRecordId } },
       skip,
       take,
       order: { createdAt: 'DESC' },

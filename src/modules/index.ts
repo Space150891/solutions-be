@@ -5,3 +5,5 @@ export { PatientDoctorsModule } from './patient-doctors/patient-doctors.module';
 export { NursesModule } from './nurses/nurses.module';
 export { StaffModule } from './staff/staff.module';
 export { AppointmentsModule } from './appointments/appointments.module';
+export { PatientIllnessModule } from './patient-illness/patient-illness.module';
+export { PatientMedicalRecordModule } from './patient-medical-record/patient-medical-record.module';
