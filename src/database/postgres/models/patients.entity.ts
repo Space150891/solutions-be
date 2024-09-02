@@ -1,8 +1,9 @@
-import { Column, Entity, ManyToMany, ManyToOne } from 'typeorm';
+import { Column, Entity, ManyToMany, ManyToOne, OneToOne } from 'typeorm';
 
+import { AppointmentsEntity } from './appointments.entity';
 import { BaseEntity } from './baseEntity';
 import { DoctorsEntity } from './doctors.entity';
-import { AppointmentsEntity } from './appointments.entity';
+import { PatientMedicalRecordEntity } from './patient-medical-record.entity';
 
 @Entity('patients')
 export class PatientsEntity extends BaseEntity {
@@ -27,4 +28,7 @@ export class PatientsEntity extends BaseEntity {
     onDelete: 'SET NULL',
   })
   appointments: AppointmentsEntity[];
+
+  @OneToOne(() => PatientMedicalRecordEntity)
+  medicalRecord: PatientMedicalRecordEntity;
 }

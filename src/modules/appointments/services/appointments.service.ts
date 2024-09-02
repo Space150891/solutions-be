@@ -1,7 +1,8 @@
+import { AppointmentsEntity } from '@/database/postgres/models';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { AppointmentsEntity } from 'src/database/postgres/models';
 import { DeleteResult, InsertResult, Repository, UpdateResult } from 'typeorm';
+
 import { AppointmentsUpdateDTO } from '../dto';
 
 @Injectable()

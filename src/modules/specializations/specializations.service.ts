@@ -1,6 +1,6 @@
+import { SpecializationsEntity } from '@/database/postgres/models';
 import { ConflictException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { SpecializationsEntity } from 'src/database/postgres/models';
 import { InsertResult, Not, Repository, UpdateResult } from 'typeorm';
 
 import { SpecializationCreateDTO } from './dto';

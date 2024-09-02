@@ -8,6 +8,8 @@ import {
   BaseEntity,
   DoctorsEntity,
   NursesEntity,
+  PatientIllnessEntity,
+  PatientMedicalRecordEntity,
   PatientsEntity,
   SpecializationsEntity,
   StaffEntity,
@@ -24,6 +26,8 @@ export const entities = [
   NursesEntity,
   StaffEntity,
   AppointmentsEntity,
+  PatientMedicalRecordEntity,
+  PatientIllnessEntity,
 ];
 
 export const PostgresDataSource = new DataSource({

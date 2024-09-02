@@ -1,9 +1,9 @@
-import { ApiHideProperty } from '@nestjs/swagger';
 import {
   DoctorsEntity,
   SpecializationsEntity,
-} from 'src/database/postgres/models';
-import { BasicRO, DeletedRO, UpdatedRO } from 'src/utils';
+} from '@/database/postgres/models';
+import { BasicRO, DeletedRO, UpdatedRO } from '@/utils';
+import { ApiHideProperty } from '@nestjs/swagger';
 
 export class SpecializationDTO implements SpecializationsEntity {
   @ApiHideProperty() doctors: DoctorsEntity[];

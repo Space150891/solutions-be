@@ -1,7 +1,7 @@
+import { StaffEntity } from '@/database/postgres/models';
+import { BasicRO, DeletedRO, UpdatedRO } from '@/utils';
 import { ApiHideProperty, ApiProperty } from '@nestjs/swagger';
 import { IsArray, IsNumber, IsOptional, IsString } from 'class-validator';
-import { StaffEntity } from 'src/database/postgres/models';
-import { BasicRO, DeletedRO, UpdatedRO } from 'src/utils';
 
 export class StaffDTO implements StaffEntity {
   first_name: string;

@@ -1,11 +1,12 @@
-import { ApiHideProperty, ApiProperty } from '@nestjs/swagger';
 import {
   AppointmentsEntity,
   DoctorsEntity,
+  PatientMedicalRecordEntity,
   PatientsEntity,
   SpecializationsEntity,
-} from 'src/database/postgres/models';
-import { BasicRO, SortByDTO } from 'src/utils';
+} from '@/database/postgres/models';
+import { BasicRO, SortByDTO } from '@/utils';
+import { ApiHideProperty, ApiProperty } from '@nestjs/swagger';
 
 export class SpecializationDTO implements SpecializationsEntity {
   @ApiProperty({ type: 'string' }) id: string;
@@ -45,6 +46,7 @@ export class PatientsListsDTO
 }
 
 export class PatientsListsPart implements PatientsEntity {
+  @ApiHideProperty() medicalRecord: PatientMedicalRecordEntity;
   @ApiProperty() id: string;
   @ApiProperty() createdAt: Date;
   @ApiProperty() updatedAt: Date;

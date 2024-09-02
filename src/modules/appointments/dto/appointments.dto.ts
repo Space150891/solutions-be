@@ -1,3 +1,9 @@
+import {
+  AppointmentsEntity,
+  DoctorsEntity,
+  PatientsEntity,
+} from '@/database/postgres/models';
+import { BasicRO, DeletedRO, UpdatedRO } from '@/utils';
 import { ApiHideProperty, ApiProperty } from '@nestjs/swagger';
 import {
   IsDateString,
@@ -6,12 +12,6 @@ import {
   IsUUID,
   Length,
 } from 'class-validator';
-import {
-  AppointmentsEntity,
-  DoctorsEntity,
-  PatientsEntity,
-} from 'src/database/postgres/models';
-import { BasicRO, DeletedRO, UpdatedRO } from 'src/utils';
 
 export class PatientAdditionalInfo {
   [x: string]: string;

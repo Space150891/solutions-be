@@ -1,7 +1,7 @@
+import { DatabaseModule } from '@/database';
+import { AppointmentsEntity } from '@/database/postgres/models';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { DatabaseModule } from 'src/database';
-import { AppointmentsEntity } from 'src/database/postgres/models';
 
 import {
   AppointmentsController,

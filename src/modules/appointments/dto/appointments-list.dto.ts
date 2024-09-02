@@ -1,10 +1,10 @@
-import { ApiHideProperty, ApiProperty } from '@nestjs/swagger';
 import {
   AppointmentsEntity,
   DoctorsEntity,
   PatientsEntity,
-} from 'src/database/postgres/models';
-import { BasicRO } from 'src/utils';
+} from '@/database/postgres/models';
+import { BasicRO } from '@/utils';
+import { ApiHideProperty, ApiProperty } from '@nestjs/swagger';
 
 export class AppointmentsDTO implements AppointmentsEntity {
   @ApiProperty() additional_info: {

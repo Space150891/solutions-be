@@ -1,12 +1,12 @@
-import { ApiHideProperty } from '@nestjs/swagger';
-import { IsOptional, IsString } from 'class-validator';
 import {
   AppointmentsEntity,
   DoctorsEntity,
   PatientsEntity,
   SpecializationsEntity,
-} from 'src/database/postgres/models';
-import { BasicRO, DeletedRO, UpdatedRO } from 'src/utils';
+} from '@/database/postgres/models';
+import { BasicRO, DeletedRO, UpdatedRO } from '@/utils';
+import { ApiHideProperty } from '@nestjs/swagger';
+import { IsOptional, IsString } from 'class-validator';
 
 export class DoctorsDTO implements DoctorsEntity {
   @ApiHideProperty() appointments: AppointmentsEntity[];

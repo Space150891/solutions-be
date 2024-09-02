@@ -1,7 +1,7 @@
+import { AppointmentsEntity } from '@/database/postgres/models';
+import { paginationBuild } from '@/utils/db-helpers';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { AppointmentsEntity } from 'src/database/postgres/models';
-import { paginationBuild } from 'src/utils/db-helpers';
 import {
   Between,
   FindManyOptions,

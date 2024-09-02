@@ -1,3 +1,3 @@
-import { PatientsListsRO } from 'src/modules/patients/dto';
+import { PatientsListsRO } from '@/modules/patients/dto';
 
 export class DoctorsPatientsRO extends PatientsListsRO {}

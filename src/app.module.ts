@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 
 import { AppController } from './app.controller';
+import { CryptoModule } from './crypto';
 import { DatabaseModule } from './database';
 import {
   AppointmentsModule,
@@ -22,6 +23,7 @@ import {
     NursesModule,
     StaffModule,
     AppointmentsModule,
+    CryptoModule,
   ],
   controllers: [AppController],
   providers: [],

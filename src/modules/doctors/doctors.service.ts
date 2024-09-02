@@ -1,10 +1,10 @@
+import { DoctorsEntity } from '@/database/postgres/models';
+import { paginationBuild, sortBuild } from '@/utils/db-helpers';
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { DoctorsEntity } from 'src/database/postgres/models';
 import { FindManyOptions, FindOptionsWhere, ILike, Repository } from 'typeorm';
 
 import { DoctorCreateDTO, DoctorsSearchDTO, DoctorUpdateDTO } from './dto';
-import { paginationBuild, sortBuild } from 'src/utils/db-helpers';
 
 @Injectable()
 export class DoctorsService {

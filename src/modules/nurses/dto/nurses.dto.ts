@@ -1,7 +1,7 @@
+import { NursesEntity } from '@/database/postgres/models';
+import { BasicRO, DeletedRO, UpdatedRO } from '@/utils';
 import { ApiHideProperty } from '@nestjs/swagger';
 import { IsDateString, IsNumber, IsOptional, IsString } from 'class-validator';
-import { NursesEntity } from 'src/database/postgres/models';
-import { BasicRO, DeletedRO, UpdatedRO } from 'src/utils';
 
 export class NursesDTO implements NursesEntity {
   gender: string;

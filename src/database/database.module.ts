@@ -1,3 +1,4 @@
+import { CryptoModule } from '@/crypto';
 import { Logger, Module } from '@nestjs/common';
 import { InjectDataSource, TypeOrmModule } from '@nestjs/typeorm';
 import { DataSource } from 'typeorm';
@@ -5,7 +6,7 @@ import { DataSource } from 'typeorm';
 import { PostgresDataSource } from './postgres';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(PostgresDataSource.options)],
+  imports: [TypeOrmModule.forRoot(PostgresDataSource.options), CryptoModule],
   exports: [TypeOrmModule],
 })
 export class DatabaseModule {

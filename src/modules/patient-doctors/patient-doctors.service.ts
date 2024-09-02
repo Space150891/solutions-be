@@ -1,6 +1,6 @@
+import { DoctorsEntity, PatientsEntity } from '@/database/postgres/models';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { DoctorsEntity, PatientsEntity } from 'src/database/postgres/models';
 import { Repository } from 'typeorm';
 
 import { PatientsListsDTO } from '../patients/dto';

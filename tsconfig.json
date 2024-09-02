@@ -17,9 +17,9 @@
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
-  },
-  "paths": {
-    "@/*": ["src/*"]
+    "paths": {
+      "@/*": ["src/*"]
+    },
   },
   "exclude": ["node_modules", "dist", "test", "coverage", "config", "scripts", "mocks"]
 }

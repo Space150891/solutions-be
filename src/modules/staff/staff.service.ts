@@ -1,9 +1,10 @@
+import { StaffEntity } from '@/database/postgres/models';
+import { paginationBuild, sortBuild } from '@/utils/db-helpers';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { StaffEntity } from 'src/database/postgres/models';
 import { Between, FindOptionsWhere, ILike, In, Repository } from 'typeorm';
+
 import { StaffSearchDTO } from './dto';
-import { paginationBuild, sortBuild } from 'src/utils/db-helpers';
 
 @Injectable()
 export class StaffService {

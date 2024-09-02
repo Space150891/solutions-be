@@ -1,6 +1,6 @@
+import { NursesEntity, PatientsEntity } from '@/database/postgres/models';
+import { BasicRO, SortByDTO } from '@/utils';
 import { ApiHideProperty } from '@nestjs/swagger';
-import { NursesEntity, PatientsEntity } from 'src/database/postgres/models';
-import { BasicRO, SortByDTO } from 'src/utils';
 
 export class NursesSearchDTO extends SortByDTO implements NursesEntity {
   description: string;

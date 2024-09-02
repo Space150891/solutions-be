@@ -1,9 +1,10 @@
+import { NursesEntity } from '@/database/postgres/models';
+import { paginationBuild, sortBuild } from '@/utils/db-helpers';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { NursesEntity } from 'src/database/postgres/models';
 import { Between, FindOptionsWhere, ILike, Repository } from 'typeorm';
+
 import { NursesSearchDTO } from './dto';
-import { paginationBuild, sortBuild } from 'src/utils/db-helpers';
 
 @Injectable()
 export class NursesService {

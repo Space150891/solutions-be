@@ -1,11 +1,12 @@
-import { ApiHideProperty } from '@nestjs/swagger';
-import { IsDateString, IsOptional, IsString } from 'class-validator';
 import {
   AppointmentsEntity,
   DoctorsEntity,
+  PatientMedicalRecordEntity,
   PatientsEntity,
-} from 'src/database/postgres/models';
-import { BasicRO, DeletedRO, UpdatedRO } from 'src/utils';
+} from '@/database/postgres/models';
+import { BasicRO, DeletedRO, UpdatedRO } from '@/utils';
+import { ApiHideProperty } from '@nestjs/swagger';
+import { IsDateString, IsOptional, IsString } from 'class-validator';
 
 export class PatientContactInfoDTO {
   @IsString() @IsOptional() address: string;
@@ -14,6 +15,7 @@ export class PatientContactInfoDTO {
 }
 
 export class PatientsDTO implements PatientsEntity {
+  @ApiHideProperty() medicalRecord: PatientMedicalRecordEntity;
   @IsString() id: string;
   @IsString() createdAt: Date;
   @IsString() updatedAt: Date;
@@ -41,6 +43,7 @@ export class UpdatePatientsDTO extends PatientsDTO {
 }
 
 export class IPatient implements PatientsEntity {
+  @ApiHideProperty() medicalRecord: PatientMedicalRecordEntity;
   code: string;
   data: PatientsEntity;
   first_name: string;

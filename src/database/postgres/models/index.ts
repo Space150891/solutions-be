@@ -6,3 +6,5 @@ export { SpecializationsEntity } from './specializations.entity';
 export { NursesEntity } from './nurses.entity';
 export { StaffEntity } from './staff.entity';
 export { AppointmentsEntity } from './appointments.entity';
+export { PatientMedicalRecordEntity } from './patient-medical-record.entity';
+export { PatientIllnessEntity } from './patient-illness.entity';

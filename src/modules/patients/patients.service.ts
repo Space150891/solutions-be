@@ -1,10 +1,11 @@
-import { Injectable, Logger } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
 import {
   DoctorsEntity,
   PatientsEntity,
   SpecializationsEntity,
-} from 'src/database/postgres/models';
+} from '@/database/postgres/models';
+import { paginationBuild, sortBuild } from '@/utils/db-helpers';
+import { Injectable, Logger } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
 import {
   Between,
   DeleteResult,
@@ -18,7 +19,6 @@ import {
 } from 'typeorm';
 
 import { PatientsListsDTO } from './dto';
-import { paginationBuild, sortBuild } from 'src/utils/db-helpers';
 
 @Injectable()
 export class PatientsService {

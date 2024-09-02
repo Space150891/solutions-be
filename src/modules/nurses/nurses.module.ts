@@ -1,7 +1,7 @@
+import { DatabaseModule } from '@/database';
+import { NursesEntity } from '@/database/postgres/models';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { DatabaseModule } from 'src/database';
-import { NursesEntity } from 'src/database/postgres/models';
 
 import { NursesController } from './nurses.controller';
 import { NursesService } from './nurses.service';

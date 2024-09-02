@@ -1,12 +1,13 @@
-import { ApiHideProperty } from '@nestjs/swagger';
-import { IsBoolean, IsOptional, IsUUID } from 'class-validator';
 import {
   AppointmentsEntity,
+  PatientMedicalRecordEntity,
   PatientsEntity,
-} from 'src/database/postgres/models';
-import { DoctorsDTO } from 'src/modules/doctors/dto';
-import { PatientContactInfoDTO } from 'src/modules/patients/dto';
-import { BasicRO } from 'src/utils';
+} from '@/database/postgres/models';
+import { DoctorsDTO } from '@/modules/doctors/dto';
+import { PatientContactInfoDTO } from '@/modules/patients/dto';
+import { BasicRO } from '@/utils';
+import { ApiHideProperty } from '@nestjs/swagger';
+import { IsBoolean, IsOptional, IsUUID } from 'class-validator';
 
 export class ISPatientHasDoctorRO extends BasicRO {
   data: { isPatientHasDoctor: boolean };
@@ -17,6 +18,7 @@ export class DoctorsPatientsIdsRO extends BasicRO {
 }
 
 export class PatientWithDoctor implements PatientsEntity {
+  @ApiHideProperty() medicalRecord: PatientMedicalRecordEntity;
   @ApiHideProperty() appointments: AppointmentsEntity[];
   first_name: string;
   last_name: string;

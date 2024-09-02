@@ -1,11 +1,11 @@
-import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { DatabaseModule } from 'src/database';
+import { DatabaseModule } from '@/database';
 import {
   DoctorsEntity,
   PatientsEntity,
   SpecializationsEntity,
-} from 'src/database/postgres/models';
+} from '@/database/postgres/models';
+import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { PatientsController } from './patients.controller';
 import { PatientsService } from './patients.service';

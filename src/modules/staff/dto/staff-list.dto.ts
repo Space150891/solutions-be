@@ -1,6 +1,6 @@
+import { StaffEntity } from '@/database/postgres/models';
+import { BasicRO, SortByDTO } from '@/utils';
 import { ApiHideProperty } from '@nestjs/swagger';
-import { StaffEntity } from 'src/database/postgres/models';
-import { BasicRO, SortByDTO } from 'src/utils';
 
 export class StaffSearchDTO extends SortByDTO implements StaffEntity {
   first_name: string;
