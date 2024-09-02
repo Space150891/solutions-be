@@ -58,4 +58,5 @@ export class DoctorsListDataRO implements DoctorsEntity {
 
 export class DoctorsListsRO extends BasicRO {
   data: DoctorsListDataRO[];
+  total: number;
 }

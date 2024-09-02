@@ -21,7 +21,7 @@ export class DoctorsService {
       limit: number;
     },
     body: DoctorsSearchDTO,
-  ): Promise<DoctorsEntity[]> {
+  ): Promise<[DoctorsEntity[], number]> {
     const { first_name, last_name, sortBy, withDescription } = body;
     const specialization = body.specialization
       ? {
@@ -73,7 +73,7 @@ export class DoctorsService {
       skip,
     };
 
-    return this.doctorsRepository.find(query);
+    return await this.doctorsRepository.findAndCount(query);
   }
 
   public async getDoctor(id: string): Promise<DoctorsEntity> {

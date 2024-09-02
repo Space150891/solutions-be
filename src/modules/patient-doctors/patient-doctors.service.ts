@@ -43,7 +43,7 @@ export class PatientDoctorService {
       limit: number;
     },
     body: Partial<PatientsListsDTO>,
-  ): Promise<PatientsEntity[]> {
+  ): Promise<[PatientsEntity[], number]> {
     const { page, limit } = pagination;
     if (!doctorId) throw new Error('Doctor ID is required');
 

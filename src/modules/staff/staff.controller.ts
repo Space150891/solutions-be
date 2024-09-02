@@ -35,10 +35,11 @@ export class StaffController {
     @Query('limit') limit = 10,
     @Body() body: StaffSearchDTO,
   ): Promise<StaffListsRO> {
-    const staff = await this.staffService.list({ page, limit }, body);
+    const [staff, total] = await this.staffService.list({ page, limit }, body);
     return {
       code: 'OK',
       data: staff,
+      total: total,
     };
   }
 

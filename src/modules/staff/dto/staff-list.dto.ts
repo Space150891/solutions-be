@@ -45,4 +45,5 @@ export class StaffListDataRO implements StaffEntity {
 
 export class StaffListsRO extends BasicRO {
   data: StaffListDataRO[];
+  total: number;
 }

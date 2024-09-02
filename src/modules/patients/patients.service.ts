@@ -33,7 +33,7 @@ export class PatientsService {
     pagination: { page: number; limit: number },
     body: Partial<PatientsListsDTO>,
     doctorId?: string,
-  ) {
+  ): Promise<[PatientsEntity[], number]> {
     const where = {} as FindOptionsWhere<PatientsEntity>;
     const { first_name, last_name, gender, doctor, sortBy } = body;
     const {
@@ -99,7 +99,7 @@ export class PatientsService {
       skip,
     };
 
-    const patients = await this.patientsRepository.find(query);
+    const patients = await this.patientsRepository.findAndCount(query);
     return patients;
   }
 

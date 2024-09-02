@@ -16,7 +16,7 @@ export class NursesService {
   public async list(
     pagination: { page: number; limit: number },
     body: NursesSearchDTO,
-  ) {
+  ): Promise<[NursesEntity[], number]> {
     const {
       first_name,
       last_name,
@@ -77,7 +77,7 @@ export class NursesService {
       skip,
     };
 
-    return this.nursesRepository.find(query);
+    return this.nursesRepository.findAndCount(query);
   }
 
   public async getNurse(id: string) {

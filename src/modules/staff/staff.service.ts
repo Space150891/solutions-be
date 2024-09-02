@@ -16,7 +16,7 @@ export class StaffService {
   async list(
     pagination: { page: number; limit: number },
     body: StaffSearchDTO,
-  ) {
+  ): Promise<[StaffEntity[], number]> {
     const {
       first_name,
       last_name,
@@ -67,7 +67,7 @@ export class StaffService {
     const order = sortBuild(sortBy);
     const { take, skip } = paginationBuild(pagination);
 
-    return await this.staffRepository.find({
+    return await this.staffRepository.findAndCount({
       where,
       select,
       order,

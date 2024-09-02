@@ -69,4 +69,5 @@ export class PatientsListsPart implements PatientsEntity {
 
 export class PatientsListsRO extends BasicRO {
   data: PatientsListsPart[];
+  total: number;
 }

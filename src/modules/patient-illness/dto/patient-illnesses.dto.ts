@@ -41,6 +41,7 @@ export class PatientIllnessesUpdateDTO extends PatientIllnessesCreateDTO {
 
 export class PatientIllnessesListRO extends BasicRO {
   data: PatientIllnessesDTO[];
+  total: number;
 }
 
 export class PatientIllnessesOneRO extends BasicRO {

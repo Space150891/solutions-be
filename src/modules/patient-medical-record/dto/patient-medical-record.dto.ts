@@ -52,7 +52,7 @@ export class PatientMedicalRecordUpdateDTO extends PatientMedicalRecordCreateDTO
 
 export class PatientMedicalRecordListRO extends BasicRO {
   data: PatientMedicalRecordDTO[];
-  count: number;
+  total: number;
 }
 
 export class PatientMedicalRecordRO extends BasicRO {

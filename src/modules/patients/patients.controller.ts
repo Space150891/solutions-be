@@ -35,7 +35,7 @@ export class PatientsController {
     @Query('doctorId') doctorId: string,
     @Body() body: PatientsListsDTO,
   ): Promise<PatientsListsRO> {
-    const result = await this.patientsService.getPatients(
+    const [result, total] = await this.patientsService.getPatients(
       { page, limit },
       body,
       doctorId,
@@ -43,6 +43,7 @@ export class PatientsController {
     return {
       code: 'OK',
       data: result,
+      total: total,
     };
   }
 

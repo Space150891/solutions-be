@@ -14,9 +14,9 @@ export class PatientIllnessService {
   public async list(
     patientRecordId: string,
     pagination: { page: number; limit: number },
-  ) {
+  ): Promise<[PatientIllnessEntity[], number]> {
     const { skip, take } = paginationBuild(pagination);
-    return await this.patientIllnessRepository.find({
+    return await this.patientIllnessRepository.findAndCount({
       where: { patientRecord: { id: patientRecordId } },
       skip,
       take,

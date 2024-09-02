@@ -35,10 +35,14 @@ export class NursesController {
     @Query('limit') limit = 10,
     @Body() body: NursesSearchDTO,
   ): Promise<NursesListsRO> {
-    const nurses = await this.nursesService.list({ page, limit }, body);
+    const [nurses, total] = await this.nursesService.list(
+      { page, limit },
+      body,
+    );
     return {
       code: 'OK',
       data: nurses,
+      total: total,
     };
   }
 

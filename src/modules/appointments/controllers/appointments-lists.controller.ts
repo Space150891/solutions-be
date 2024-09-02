@@ -24,7 +24,7 @@ export class AppointmentsListsController {
     @Query('withDoctor') withDoctor: boolean,
     @Query('withPatient') withPatient: boolean,
   ): Promise<AppointmentsListRO> {
-    const result = await this.appointmentsService.getAppointmentsAll(
+    const [result, total] = await this.appointmentsService.getAppointmentsAll(
       { from, to },
       { page, limit },
       { withDoctor, withPatient },
@@ -32,6 +32,7 @@ export class AppointmentsListsController {
     return {
       code: 'OK',
       data: result,
+      total: total,
     };
   }
 
@@ -51,15 +52,17 @@ export class AppointmentsListsController {
     @Query('withDoctor') withDoctor: boolean,
     @Query('withPatient') withPatient: boolean,
   ): Promise<AppointmentsListRO> {
-    const result = await this.appointmentsService.getDoctorAppointments(
-      doctorId,
-      { from, to },
-      { page, limit },
-      { withDoctor, withPatient },
-    );
+    const [result, total] =
+      await this.appointmentsService.getDoctorAppointments(
+        doctorId,
+        { from, to },
+        { page, limit },
+        { withDoctor, withPatient },
+      );
     return {
       code: 'OK',
       data: result,
+      total: total,
     };
   }
 
@@ -77,15 +80,17 @@ export class AppointmentsListsController {
     @Query('withDoctor') withDoctor: boolean,
     @Query('withPatient') withPatient: boolean,
   ): Promise<AppointmentsListRO> {
-    const result = await this.appointmentsService.getPatientAppointments(
-      patientId,
-      { from, to },
-      { page, limit },
-      { withDoctor, withPatient },
-    );
+    const [result, total] =
+      await this.appointmentsService.getPatientAppointments(
+        patientId,
+        { from, to },
+        { page, limit },
+        { withDoctor, withPatient },
+      );
     return {
       code: 'OK',
       data: result,
+      total: total,
     };
   }
 
@@ -105,15 +110,17 @@ export class AppointmentsListsController {
     @Query('withDoctor') withDoctor: boolean,
     @Query('withPatient') withPatient: boolean,
   ): Promise<AppointmentsListRO> {
-    const result = await this.appointmentsService.getDoctorOccupiedDates(
-      doctorId,
-      { from, to },
-      { page, limit },
-      { withDoctor, withPatient },
-    );
+    const [result, total] =
+      await this.appointmentsService.getDoctorOccupiedDates(
+        doctorId,
+        { from, to },
+        { page, limit },
+        { withDoctor, withPatient },
+      );
     return {
       code: 'OK',
       data: result,
+      total: total,
     };
   }
 
@@ -133,15 +140,17 @@ export class AppointmentsListsController {
     @Query('withDoctor') withDoctor: boolean,
     @Query('withPatient') withPatient: boolean,
   ): Promise<AppointmentsListRO> {
-    const result = await this.appointmentsService.getPatientOccupiedDates(
-      patientId,
-      { from, to },
-      { page, limit },
-      { withDoctor, withPatient },
-    );
+    const [result, total] =
+      await this.appointmentsService.getPatientOccupiedDates(
+        patientId,
+        { from, to },
+        { page, limit },
+        { withDoctor, withPatient },
+      );
     return {
       code: 'OK',
       data: result,
+      total: total,
     };
   }
 }

@@ -23,7 +23,7 @@ export class AppointmentsListsService {
     range: { from: Date; to: Date },
     pagination: { page: number; limit: number },
     withParameter: { withDoctor?: boolean; withPatient?: boolean },
-  ): Promise<AppointmentsEntity[]> {
+  ): Promise<[AppointmentsEntity[], number]> {
     return await this.getAppointments(
       range,
       pagination,
@@ -37,7 +37,7 @@ export class AppointmentsListsService {
     range: { from: Date; to: Date },
     pagination: { page: number; limit: number },
     withParameter: { withDoctor?: boolean; withPatient?: boolean },
-  ): Promise<AppointmentsEntity[]> {
+  ): Promise<[AppointmentsEntity[], number]> {
     return await this.getAppointments(
       range,
       pagination,
@@ -51,7 +51,7 @@ export class AppointmentsListsService {
     range: { from: Date; to: Date },
     pagination: { page: number; limit: number },
     withParameter: { withDoctor?: boolean; withPatient?: boolean },
-  ): Promise<AppointmentsEntity[]> {
+  ): Promise<[AppointmentsEntity[], number]> {
     return await this.getAppointments(
       range,
       pagination,
@@ -65,7 +65,7 @@ export class AppointmentsListsService {
     range: { from: Date; to: Date },
     pagination: { page: number; limit: number },
     withParameter: { withDoctor?: boolean; withPatient?: boolean },
-  ): Promise<AppointmentsEntity[]> {
+  ): Promise<[AppointmentsEntity[], number]> {
     const { withDoctor, withPatient } = withParameter;
 
     const { skip, take } = paginationBuild(pagination);
@@ -75,7 +75,7 @@ export class AppointmentsListsService {
     if (withDoctor) relations.push('doctor');
     if (withPatient) relations.push('patient');
 
-    const appointments = await this.appointmentsRepository.find({
+    const appointments = await this.appointmentsRepository.findAndCount({
       relations,
       where: {
         doctor: { id: doctorId },
@@ -95,7 +95,7 @@ export class AppointmentsListsService {
     range: { from: Date; to: Date },
     pagination: { page: number; limit: number },
     withParameter: { withDoctor?: boolean; withPatient?: boolean },
-  ): Promise<AppointmentsEntity[]> {
+  ): Promise<[AppointmentsEntity[], number]> {
     const { skip, take } = paginationBuild(pagination);
     const rangeFinal = this.dates2yearsRange(range);
 
@@ -104,7 +104,7 @@ export class AppointmentsListsService {
     if (withDoctor) relations.push('doctor');
     if (withPatient) relations.push('patient');
 
-    const appointments = await this.appointmentsRepository.find({
+    const appointments = await this.appointmentsRepository.findAndCount({
       relations,
       where: {
         patient: { id: patientId },
@@ -160,7 +160,7 @@ export class AppointmentsListsService {
     pagination: { page: number; limit: number },
     initiator: { doctorId?: string; patientId?: string; admin?: boolean },
     withParameter?: { withDoctor?: boolean; withPatient?: boolean },
-  ): Promise<AppointmentsEntity[]> {
+  ): Promise<[AppointmentsEntity[], number]> {
     const { doctorId, patientId, admin } = initiator;
     if (!doctorId && !patientId && !admin) throw new Error('Invalid initiator');
 
@@ -197,7 +197,7 @@ export class AppointmentsListsService {
       skip,
     };
 
-    return await this.appointmentsRepository.find(query);
+    return await this.appointmentsRepository.findAndCount(query);
   }
 
   private dates2yearsRange({ from, to }: { from?: Date; to?: Date }) {

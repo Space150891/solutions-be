@@ -56,4 +56,5 @@ export class AppointmentsListDataRO implements AppointmentsEntity {
 
 export class AppointmentsListRO extends BasicRO {
   data: AppointmentsListDataRO[];
+  total: number;
 }

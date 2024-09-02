@@ -45,4 +45,5 @@ export class NursesListDataRO implements NursesEntity {
 
 export class NursesListsRO extends BasicRO {
   data: NursesListDataRO[];
+  total: number;
 }

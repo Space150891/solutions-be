@@ -32,13 +32,14 @@ export class PatientIllnessController {
     @Query('page') page = 1,
     @Query('limit') limit = 10,
   ): Promise<PatientIllnessesListRO> {
-    const result = await this.patientIllnessService.list(patientRecordId, {
-      page,
-      limit,
-    });
+    const [result, total] = await this.patientIllnessService.list(
+      patientRecordId,
+      { page, limit },
+    );
     return {
       code: 'OK',
       data: result,
+      total: total,
     };
   }
 
