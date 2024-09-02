@@ -17,7 +17,6 @@ export class PatientIllnessesDTO extends PatientIllnessEntity {
   @ApiHideProperty() id: string;
   @ApiHideProperty() createdAt: Date;
   @ApiHideProperty() updatedAt: Date;
-  test: string;
 }
 
 export class PatientIllnessesCreateDTO extends PatientIllnessesDTO {
