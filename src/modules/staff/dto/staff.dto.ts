@@ -1,9 +1,10 @@
-import { StaffEntity } from '@/database/postgres/models';
+import { StaffEntity, UsersEntity } from '@/database/postgres/models';
 import { BasicRO, DeletedRO, UpdatedRO } from '@/utils';
 import { ApiHideProperty, ApiProperty } from '@nestjs/swagger';
 import { IsArray, IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class StaffDTO implements StaffEntity {
+  @ApiHideProperty() user: UsersEntity;
   first_name: string;
   last_name: string;
   description: string;
@@ -21,6 +22,7 @@ export class StaffDTO implements StaffEntity {
 }
 
 export class StaffCreateDTO implements StaffEntity {
+  @ApiHideProperty() user: UsersEntity;
   @IsString() first_name: string;
   @IsString() last_name: string;
   @IsString() @IsOptional() description: string;
@@ -44,6 +46,7 @@ export class StaffCreateDTO implements StaffEntity {
 }
 
 export class StaffUpdateDTO implements Partial<StaffCreateDTO> {
+  @ApiHideProperty() user: UsersEntity;
   @IsString() @IsOptional() first_name: string;
   @IsString() @IsOptional() last_name: string;
   @IsString() @IsOptional() description: string;

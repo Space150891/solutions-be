@@ -1,13 +1,25 @@
-import { Column, Entity, ManyToOne, OneToMany } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  OneToOne,
+} from 'typeorm';
 
 import { AppointmentsEntity } from './appointments.entity';
 import { BaseEntity } from './baseEntity';
 import { PatientIllnessEntity } from './patient-illness.entity';
 import { PatientsEntity } from './patients.entity';
 import { SpecializationsEntity } from './specializations.entity';
+import { UsersEntity } from './user.entity';
 
 @Entity('doctors')
 export class DoctorsEntity extends BaseEntity {
+  @OneToOne(() => UsersEntity, (user) => user.doctor)
+  @JoinColumn()
+  user: UsersEntity;
+
   @Column() first_name: string;
   @Column() last_name: string;
   @Column({ default: '' }) description: string;

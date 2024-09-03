@@ -1,3 +1,4 @@
+import { JwtAuthGuard, Role, Roles, RolesGuard } from '@/auth';
 import {
   Body,
   Controller,
@@ -7,6 +8,7 @@ import {
   Post,
   Put,
   Query,
+  UseGuards,
 } from '@nestjs/common';
 import { ApiQuery, ApiTags } from '@nestjs/swagger';
 
@@ -20,6 +22,8 @@ import {
 } from './dto';
 import { PatientsService } from './patients.service';
 
+@UseGuards(JwtAuthGuard, RolesGuard)
+@Roles(Role.Admin)
 @ApiTags('Patients')
 @Controller('patients')
 export class PatientsController {

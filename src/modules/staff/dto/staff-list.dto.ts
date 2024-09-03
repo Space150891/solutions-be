@@ -1,8 +1,9 @@
-import { StaffEntity } from '@/database/postgres/models';
+import { StaffEntity, UsersEntity } from '@/database/postgres/models';
 import { BasicRO, SortByDTO } from '@/utils';
 import { ApiHideProperty } from '@nestjs/swagger';
 
 export class StaffSearchDTO extends SortByDTO implements StaffEntity {
+  @ApiHideProperty() user: UsersEntity;
   first_name: string;
   last_name: string;
   description: string;
@@ -27,6 +28,7 @@ export class StaffSearchDTO extends SortByDTO implements StaffEntity {
 }
 
 export class StaffListDataRO implements StaffEntity {
+  @ApiHideProperty() user: UsersEntity;
   first_name: string;
   last_name: string;
   description: string;

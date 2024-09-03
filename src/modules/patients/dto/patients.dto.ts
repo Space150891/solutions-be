@@ -3,6 +3,7 @@ import {
   DoctorsEntity,
   PatientMedicalRecordEntity,
   PatientsEntity,
+  UsersEntity,
 } from '@/database/postgres/models';
 import { BasicRO, DeletedRO, UpdatedRO } from '@/utils';
 import { ApiHideProperty } from '@nestjs/swagger';
@@ -15,6 +16,7 @@ export class PatientContactInfoDTO {
 }
 
 export class PatientsDTO implements PatientsEntity {
+  @ApiHideProperty() user: UsersEntity;
   @ApiHideProperty() medicalRecord: PatientMedicalRecordEntity;
   @IsString() id: string;
   @IsString() createdAt: Date;
@@ -43,6 +45,7 @@ export class UpdatePatientsDTO extends PatientsDTO {
 }
 
 export class IPatient implements PatientsEntity {
+  @ApiHideProperty() user: UsersEntity;
   @ApiHideProperty() medicalRecord: PatientMedicalRecordEntity;
   code: string;
   data: PatientsEntity;

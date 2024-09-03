@@ -13,6 +13,7 @@ import {
   PatientsEntity,
   SpecializationsEntity,
   StaffEntity,
+  UsersEntity,
 } from './models';
 
 dotenv.config();
@@ -28,6 +29,7 @@ export const entities = [
   AppointmentsEntity,
   PatientMedicalRecordEntity,
   PatientIllnessEntity,
+  UsersEntity,
 ];
 
 export const PostgresDataSource = new DataSource({

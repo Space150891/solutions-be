@@ -30,11 +30,17 @@ export const useDocumentation = (app: INestApplication) => {
     .setDescription('Cubex Health API Documentation')
     .setVersion('1.0')
     .addServer('/api')
+    .addBearerAuth()
+    .addSecurityRequirements('bearer')
     .build();
   const document = SwaggerModule.createDocument(app, options, {
     ignoreGlobalPrefix: true,
   });
-  SwaggerModule.setup('/api/docs', app, document);
+  SwaggerModule.setup('/api/docs', app, document, {
+    swaggerOptions: {
+      persistAuthorization: true,
+    },
+  });
 };
 
 export const useMiddlewares = (app: INestApplication) => {

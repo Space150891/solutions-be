@@ -6,6 +6,7 @@ import {
   Param,
   Post,
   Put,
+  UseGuards,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 
@@ -19,7 +20,10 @@ import {
   UpdateSpecializationRO,
 } from './dto';
 import { SpecializationsService } from './specializations.service';
+import { JwtAuthGuard, RolesGuard, Roles, Role } from '@/auth';
 
+@UseGuards(JwtAuthGuard, RolesGuard)
+@Roles(Role.Admin)
 @ApiTags('Specializations')
 @Controller('specializations')
 export class SpecializationsController {

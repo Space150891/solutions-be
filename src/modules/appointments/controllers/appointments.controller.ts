@@ -1,3 +1,4 @@
+import { JwtAuthGuard, Role, Roles, RolesGuard } from '@/auth';
 import {
   Body,
   Controller,
@@ -6,6 +7,7 @@ import {
   Param,
   Post,
   Put,
+  UseGuards,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 
@@ -19,6 +21,8 @@ import {
 } from '../dto';
 import { AppointmentsService } from '../services';
 
+@UseGuards(JwtAuthGuard, RolesGuard)
+@Roles(Role.Admin)
 @ApiTags('Appointments')
 @Controller('appointments')
 export class AppointmentsController {

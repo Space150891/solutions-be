@@ -4,6 +4,7 @@ import {
   PatientIllnessEntity,
   PatientsEntity,
   SpecializationsEntity,
+  UsersEntity,
 } from '@/database/postgres/models';
 import { BasicRO, SortByDTO } from '@/utils';
 import { ApiHideProperty, ApiProperty } from '@nestjs/swagger';
@@ -23,6 +24,7 @@ export class DoctorsSearchDTO
   extends DoctorsWithSpecializationDTO
   implements DoctorsEntity
 {
+  @ApiHideProperty() user: UsersEntity;
   @ApiHideProperty() illnesses: PatientIllnessEntity[];
   first_name: string;
   last_name: string;
@@ -43,6 +45,7 @@ export class DoctorsSearchDTO
 }
 
 export class DoctorsListDataRO implements DoctorsEntity {
+  @ApiHideProperty() user: UsersEntity;
   @ApiHideProperty() illnesses: PatientIllnessEntity[];
   @ApiHideProperty() appointments: AppointmentsEntity[];
   specialization: SpecializationDTO;

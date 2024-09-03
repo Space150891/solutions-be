@@ -1,9 +1,14 @@
-import { Column, Entity } from 'typeorm';
+import { Column, Entity, JoinColumn, OneToOne } from 'typeorm';
 
 import { BaseEntity } from './baseEntity';
+import { UsersEntity } from './user.entity';
 
 @Entity('staff')
 export class StaffEntity extends BaseEntity {
+  @OneToOne(() => UsersEntity, (user) => user.staff)
+  @JoinColumn()
+  user: UsersEntity;
+
   @Column() first_name: string;
   @Column() last_name: string;
   @Column({ default: '' }) description: string;

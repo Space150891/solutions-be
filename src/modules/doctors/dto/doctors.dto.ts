@@ -4,12 +4,14 @@ import {
   PatientIllnessEntity,
   PatientsEntity,
   SpecializationsEntity,
+  UsersEntity,
 } from '@/database/postgres/models';
 import { BasicRO, DeletedRO, UpdatedRO } from '@/utils';
 import { ApiHideProperty } from '@nestjs/swagger';
 import { IsOptional, IsString } from 'class-validator';
 
 export class DoctorsDTO implements DoctorsEntity {
+  @ApiHideProperty() user: UsersEntity;
   @ApiHideProperty() illnesses: PatientIllnessEntity[];
   @ApiHideProperty() appointments: AppointmentsEntity[];
   @ApiHideProperty() specialization: SpecializationsEntity;
@@ -23,7 +25,16 @@ export class DoctorsDTO implements DoctorsEntity {
   description: string;
 }
 
-export class DoctorCreateDTO implements Partial<DoctorsEntity> {
+export class DoctorCreateDTO implements DoctorsEntity {
+  @ApiHideProperty() user: UsersEntity;
+  @ApiHideProperty() specialization: SpecializationsEntity;
+  @ApiHideProperty() patients: PatientsEntity[];
+  @ApiHideProperty() appointments: AppointmentsEntity[];
+  @ApiHideProperty() illnesses: PatientIllnessEntity[];
+  @ApiHideProperty() id: string;
+  @ApiHideProperty() createdAt: Date;
+  @ApiHideProperty() updatedAt: Date;
+
   @IsString() first_name: string;
   @IsString() last_name: string;
   @IsString() @IsOptional() description: string;

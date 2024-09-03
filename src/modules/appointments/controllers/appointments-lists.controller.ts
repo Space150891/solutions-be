@@ -1,9 +1,12 @@
-import { Controller, Get, Param, Query } from '@nestjs/common';
+import { JwtAuthGuard, Role, Roles, RolesGuard } from '@/auth';
+import { Controller, Get, Param, Query, UseGuards } from '@nestjs/common';
 import { ApiQuery, ApiTags } from '@nestjs/swagger';
 
 import { AppointmentsListRO } from '../dto';
 import { AppointmentsListsService } from '../services';
 
+@UseGuards(JwtAuthGuard, RolesGuard)
+@Roles(Role.Admin)
 @ApiTags('Appointments lists')
 @Controller('appointments/lists')
 export class AppointmentsListsController {

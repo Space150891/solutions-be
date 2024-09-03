@@ -8,3 +8,4 @@ export { StaffEntity } from './staff.entity';
 export { AppointmentsEntity } from './appointments.entity';
 export { PatientMedicalRecordEntity } from './patient-medical-record.entity';
 export { PatientIllnessEntity } from './patient-illness.entity';
+export { UsersEntity } from './user.entity';

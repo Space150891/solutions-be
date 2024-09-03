@@ -1,9 +1,10 @@
-import { NursesEntity } from '@/database/postgres/models';
+import { NursesEntity, UsersEntity } from '@/database/postgres/models';
 import { BasicRO, DeletedRO, UpdatedRO } from '@/utils';
 import { ApiHideProperty } from '@nestjs/swagger';
 import { IsDateString, IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class NursesDTO implements NursesEntity {
+  @ApiHideProperty() user: UsersEntity;
   gender: string;
   rank: string;
   department: string;
@@ -20,6 +21,7 @@ export class NursesDTO implements NursesEntity {
 }
 
 export class NurseCreateDTO implements NursesEntity {
+  @ApiHideProperty() user: UsersEntity;
   @IsString() gender: string;
   @IsString() rank: string;
   @IsString() department: string;

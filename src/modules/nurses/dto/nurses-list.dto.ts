@@ -1,8 +1,13 @@
-import { NursesEntity, PatientsEntity } from '@/database/postgres/models';
+import {
+  NursesEntity,
+  PatientsEntity,
+  UsersEntity,
+} from '@/database/postgres/models';
 import { BasicRO, SortByDTO } from '@/utils';
 import { ApiHideProperty } from '@nestjs/swagger';
 
 export class NursesSearchDTO extends SortByDTO implements NursesEntity {
+  @ApiHideProperty() user: UsersEntity;
   description: string;
   gender: string;
   rank: string;
@@ -27,6 +32,7 @@ export class NursesSearchDTO extends SortByDTO implements NursesEntity {
 }
 
 export class NursesListDataRO implements NursesEntity {
+  @ApiHideProperty() user: UsersEntity;
   gender: string;
   rank: string;
   department: string;
