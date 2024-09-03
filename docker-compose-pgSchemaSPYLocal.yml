@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  schemaspy:
+    image: schemaspy/schemaspy:snapshot
+    volumes:
+      - ./schemaspy/local/output:/output
+      - ./schemaspy/local/config:/config
+    container_name: 'schemaspy_local'
+    command:
+      ['-configFile', '/config/schemaspy.properties', '-imageformat', 'svg']
